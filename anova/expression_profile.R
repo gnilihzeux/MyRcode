@@ -1,0 +1,29 @@
+###########################################
+### examples讲的都是统计学中如何运用方差分析 ###
+### 在这里将用方差分析解决高通量数据的问题    ###
+###########################################
+
+###--- 表达谱的方差分析 ----------------------
+# 数据构建
+# 比较小鼠心脏发育的四个阶段（ESC，MES，CP，CM），识别发育过程中具有显著差异的基因
+# 原始表达谱读入
+protein_coding <- read.table("protein_coding.fpkm.landscape.txt", sep= "\t", header= T, stringsAsFactors= F)
+# log2转换
+prt <- log2(protein_coding + 0.05)
+# 变量构建
+prt_variable <- sub("[0-9]*$", "", colnames(prt))
+prt_response <- t(data.matrix(prt))
+# 方差分析
+prt_s <- summary(aov(prt_response ~ prt_variable))
+# 获取p值
+prt_p <- sapply(prt_s, getP, USE.NAMES= F)
+# FDR校正
+prt_fdr <- p.adjust(prt_p, method= "BH")
+
+###--- 说明 --------------------------------
+# 基本上没有对基因表达谱进行方差分析的资源，所以内容只能自己摸索的
+# 该实例实际上是单因子方差分析，因子即发育阶段，包含四个水平；事实上是对每一个基因进行单独的方差分析
+# 由之前的基本知识可知，做方差分析的前提是独立性、正态性和方差齐性
+# 正态性好解释，一般一个基因的表达谱都做了log2转换，接近正态分布
+# 我们也可以假设基因在每个阶段表达是相对独立的，实际上应该是有联系的
+# 齐次检验这里并没有进行，所以应该存在争议
