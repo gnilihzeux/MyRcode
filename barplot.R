@@ -58,6 +58,44 @@ arrows(x0=x_loc, x1= x_loc, y0= mean_tbl[, 2], y1= mean_tbl[, 2] + sd_tbl[, 2], 
 arrows(x0=x_loc, x1= x_loc, y0= mean_tbl[, 2], y1= mean_tbl[, 2] - sd_tbl[, 2], angle= 90, length= .05)
 
 ###--- 不同组别坐标轴对称分布 ---------------------------------------
+# 这非常简单，主要依靠数据的正负表现
+barplot(c(1, -1, 2))
+
+###--- bar截断 ----------------------------------------------------
+# 有时候某个bar太长了，比较尺度太大，将整体性对比度缩小了，因此需要将其截断显示
+# 例如下面的例子
+mat <- c(969, 248, 92, 30, 7, 3, 4, 4, 1)
+# 如果要达到缩短第一个bar凸显其他bar的话，需要以矩阵的形式截断输入
+m0 <- mat
+m0[1] <- 250
+m1 <- c(10, rep(0, 8))
+# 设计好截断比例
+m2 <- c(69*40/100, rep(0, 8))
+mat <- matrix(c(m0, m1, m2), nrow= 3, byrow= T)
+mat
+# 绘图
+barplot(mat, col= c("grey", "white", "grey"), border= T, axes= T,
+        ylim= c(0, 300), xlim= c(0, 17), names.arg= 1:9
+)
+# 可以看出我们构造的图纵坐标不对，所以要对坐标重新构造；且border也要去掉才行
+barplot(mat, col= c("grey", "white", "grey"), border= F, axes= F,
+        ylim= c(0, 300), xlim= c(0, 17), names.arg= 1:9
+)
+axis(2, at= c(0, 10, 30, 100, 150, 200, 250), labels= c(0, 10, 30, 100, 150, 200, 250), las= 1)
+axis(2, at= c(260, 300), labels= c(900, 1000), las= 1)
+
+# 另一个相似的例子
+m0 <- c(172, 24, 15, 5, rep(0, 5))
+m1 <- c(78, 224, 77, 25, 7, 3, 4, 4, 1)
+m2 <- c(10, rep(0, 8))
+m3 <- c(34, rep(0, 8))
+mat <- matrix(c(m0, m1, m2, m3), 4, byrow= T)
+barplot(mat, ylim= c(0, 300), col= c("black", "grey", "white", "grey"), 
+        border= F, xlim= c(0, 17), xlab= "no. circRNAs", ylab= "no. hosts", 
+        names.arg= 1:9, axes= F)
+axis(2, at= c(0, 10, 30, 100, 150, 200, 250), labels= c(0, 10, 30, 100, 150, 200, 250), las= 1)
+axis(2, at= c(260, 300), labels= c(900, 1000), las= 1)
+
 ##############
 #### 讨论   ###
 ##############
