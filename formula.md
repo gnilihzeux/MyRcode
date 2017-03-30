@@ -5,6 +5,7 @@
 `?formula`
 
 ##常用符号##
+
 | symbol | description |
 | :---: | :---: |
 | ~ | 分隔符号，左边为因变量，右边为自变量 e.g y ~ x |
