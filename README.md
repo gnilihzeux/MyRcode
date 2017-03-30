@@ -20,5 +20,5 @@
 ### 函数解析
 
   * [formula](https://github.com/gnilihzeux/MyRcode/blob/master/formula.md)
-  * [barplot](https://github.com/gnilihzeux/MyRcode/blob/master/barplot.md)
-  * [stripchart为boxplot加散点](https://github.com/gnilihzeux/MyRcode/blob/master/stripchart.md)
+  * [barplot](https://github.com/gnilihzeux/MyRcode/blob/master/barplot.R)
+  * [stripchart为boxplot加散点](https://github.com/gnilihzeux/MyRcode/blob/master/stripchart.R)
