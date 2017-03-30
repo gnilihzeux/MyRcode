@@ -13,6 +13,12 @@
 ### 统计学
   
   * [方差分析](https://github.com/gnilihzeux/MyRcode/tree/master/anova)
+    - [单因素方差分析](https://github.com/gnilihzeux/MyRcode/blob/master/anova/1examples.one_way_anova.R)
+    - [无交互两因素方差分析](https://github.com/gnilihzeux/MyRcode/blob/master/anova/2examples.two_ways_anova_without_interaction.R)
+    - [交互两因素方差分析](https://github.com/gnilihzeux/MyRcode/blob/master/anova/3examples.two_ways_anova_with_interaction.R)
+    - [协方差分析](https://github.com/gnilihzeux/MyRcode/blob/master/anova/4ancova.R)
+    - [表达谱作方差分析](https://github.com/gnilihzeux/MyRcode/blob/master/anova/5expression_profile.R)
+
   
 ### 常用小技巧
 
