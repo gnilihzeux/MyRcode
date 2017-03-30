@@ -21,4 +21,4 @@
 
   * [formula](https://github.com/gnilihzeux/MyRcode/blob/master/formula.md)
   * [barplot](https://github.com/gnilihzeux/MyRcode/blob/master/barplot.md)
-  * [stripchart为boxplot加散点](https://github.com/gnilihzeux/MyRcode/blob/master/stripchart.md)
+  * [stripchart为boxplot加散点](https://github.com/gnilihzeux/MyRcode/blob/master/stripchart.md)
