@@ -5,4 +5,10 @@
 的图片已经挂了。
 
 ---
-整个讲解非常详细、全面和简单，主要介绍了**expression**、**substitue**、**quote**、**enquote**、**parse**等相应函数。
+整个讲解非常详细、全面和简单，主要介绍的函数包括  
+  **expression**  
+  **substitue**  
+  **quote**  
+  **enquote**  
+  **parse**  
+  **plotmath**  
