@@ -34,9 +34,9 @@ text(loc[, 1]/24, loc[, 2]/26, m, cex= .5)
 barplot(rep(1, 5), col= colors()[c(8, 18, 118, 518, 618)], axes= F)
 ```  
 
-实际上，这里展示的是R中固有的颜色。据该文档介绍，R将所有颜色的名字存到了相应的位置(安装目录中)，  
-linux: /usr/lib/X11/rgb.txt (or sometimes /etc/X11)  
-windows: C:\Program Files\R\rw<version>\etc\rgb.txt  
+实际上，这里展示的是R中固有的颜色。据该文档介绍，R将所有颜色的名字存到了相应的位置(安装目录中)，  
+`linux: /usr/lib/X11/rgb.txt (or sometimes /etc/X11)`  
+`windows: C:\Program Files\R\rw<version>\etc\rgb.txt`  
 下面介绍几个关于R color的几个函数  
 &ensp;**colors**  
 &ensp;我们已经知道该函数总共包含657个值，实际上除了第一个white，其他值都是按照字母表顺序排列的；  
