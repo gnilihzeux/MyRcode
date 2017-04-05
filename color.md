@@ -9,8 +9,8 @@
 &ensp;**topo.colors**  
 &ensp;**cm.colors**  
 另外还有自定义调色板  
-&ensp;**colorRampPalette  
-以及灰度设置  
+&ensp;**colorRampPalette**  
+以及灰度设置  
 &ensp;**gray**  
 
 当然光有靓装还不行，还需要懂得如何搭配~  
@@ -18,22 +18,32 @@
 [RGB选色](http://www.rapidtables.com/web/color/RGB_Color.htm)  
 [科技论文常用配色](http://geog.uoregon.edu/datagraphics/color_scales.htm)  
 
----  
+---  
 
 ### R中的颜色  
   
-[R颜色板](http://research.stowers.org/efg/R/Color/Chart/)好像不好使了，搜索R Color Chart应该能搜到，或者输入下面代码展示 
+[R颜色板](http://research.stowers.org/efg/R/Color/Chart/)链接不到了似乎，搜索R Color Chart应该能搜到，或者输入下面代码展示 
 
 ```  
-
-library(gplots)  
-m <- matrix(1:675, 25, 27, byrow= T)  
+m <- matrix(1:675, 25, 27)  
 # 面板中总共有657种颜色  
-heatmap.2(m, cellnote= m, notecol= colors()[1:675]) 
-
-```  
+image(m, col= colors(), axes= F)  
+loc <- expand.grid(0:24, 0:26)
+text(loc[, 1]/24, loc[, 2]/26, m, cex= .5)
+# 例如取其中几种颜色显示
+barplot(rep(1, 5), col= colors()[c(8, 18, 118, 518, 618)], axes= F)
+```  
 
 实际上，这里展示的是R中固有的颜色。据该文档介绍，R将所有颜色的名字存到了相应的位置(安装目录中)，  
 linux: /usr/lib/X11/rgb.txt (or sometimes /etc/X11)  
-windows: C:\Program Files\R\rw<version>\etc\rgb.txt  
-下面介绍几个关于R color的几个函数
+windows: C:\Program Files\R\rw<version>\etc\rgb.txt  
+下面介绍几个关于R color的几个函数  
+&ensp;**colors**  
+&ensp;我们已经知道该函数总共包含657个值，实际上除了第一个white，其他值都是按照字母表顺序排列的；  
+&ensp;如果想获得特定的颜色，比如红色，可以用`grep("red", colors())`  
+&ensp;**col2rgb**  
+&ensp;这个函数好理解，就是将颜色转换成red/green/blue三原色，例如`col2rgb("red")`  
+&ensp;与它相对应的函数  
+&ensp;**rgb**  
+&ensp;默认输入是0-1之间的值，例如`rgb(1.0, 1.0, 0.0)`  
+&ensp;也可以更改参数maxColorValue=255将输入设置为我们常见的255格式，例如`rgb(255, 255, 0, maxColorValue=255)`  
