@@ -22,7 +22,7 @@
 
 ### R中的颜色  
   
-[R颜色板](http://research.stowers.org/efg/R/Color/Chart/)链接不到了似乎，搜索R Color Chart应该能搜到，或者输入下面代码展示 
+[R颜色板](http://research.stowers.org/efg/R/Color/Chart/)链接不到了似乎，搜索[R Color Chart](https://www.aiguso.ml/)应该能搜到，或者输入下面代码展示 
 
 ```  
 m <- matrix(1:675, 25, 27)  
@@ -46,4 +46,6 @@ barplot(rep(1, 5), col= colors()[c(8, 18, 118, 518, 618)], axes= F)
 &ensp;与它相对应的函数  
 &ensp;**rgb**  
 &ensp;默认输入是0-1之间的值，例如`rgb(1.0, 1.0, 0.0)`  
-&ensp;也可以更改参数maxColorValue=255将输入设置为我们常见的255格式，例如`rgb(255, 255, 0, maxColorValue=255)`  
+&ensp;也可以更改参数maxColorValue=255将输入设置为我们常见的255格式，例如`rgb(255, 255, 0, maxColorValue=255)`  
+
+另外，该文档也介绍了将上面那个R Color Chart更好的展示，例如颜色归类，有相应的代码，可以网上搜索搜索……
