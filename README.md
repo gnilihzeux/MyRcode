@@ -23,8 +23,9 @@
 
   
 ### 常用小技巧
-
-
+  
+  * [R配色](https://github.com/gnilihzeux/MyRcode/blob/master/color.md)  
+  
 ### 函数解析
 
   * [formula](https://github.com/gnilihzeux/MyRcode/blob/master/formula.md)
