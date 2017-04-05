@@ -10,7 +10,7 @@
 &ensp;**cm.colors**  
 另外还有自定义调色板  
 &ensp;**colorRampPalette**  
-以及灰度设置  
+以及灰度设置  
 &ensp;**gray**  
 
 当然光有靓装还不行，还需要懂得如何搭配~  
