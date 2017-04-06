@@ -32,3 +32,4 @@
   * [barplot](https://github.com/gnilihzeux/MyRcode/blob/master/barplot.R)
   * [stripchart为boxplot加散点](https://github.com/gnilihzeux/MyRcode/blob/master/stripchart.R)
   * [expression/quote/substitute/parse](https://github.com/gnilihzeux/MyRcode/edit/master/substitute.md)
+  * [paste参数sep与collapse的区别](https://github.com/gnilihzeux/MyRcode/blob/master/paste.md)
