@@ -80,7 +80,7 @@ bigcor <- function(
 
 ###--- 通过判断矩阵大小评估使用cor还是bigcor -----
 pearsonCorrelationMatrix <- function(
-	x, y= NULL, size= 2000
+	x, y= NULL, size= 500
 )
 {
 	NROW <- ifelse(is.null(y), 
@@ -88,7 +88,7 @@ pearsonCorrelationMatrix <- function(
 		max(ncol(x), ncol(y))
 	)
 	if(NROW >= 5000){
-		r <- bigcor(x, y, fun= "cor", method= "pearson")
+		r <- bigcor(x, y, size= size, fun= "cor", method= "pearson")
 		# 将ff格式转化为matrix，用as.ffdf或者下面的方式
 		r <- r[,]
 	}else{
@@ -105,7 +105,7 @@ pearsonCorrelationMatrix <- function(
 ###--- cor.test ----------------------------------
 ### 用t-test对皮尔森相关性进行检验，默认双边检验，参考自cor.test.default
 pearsonTestMatrix <- function(
-	x, y= NULL, size= 2000, adjust= "BH"
+	x, y= NULL, size= 500, adjust= "BH"
 )
 {
 	# 计算相关系数
