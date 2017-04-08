@@ -168,6 +168,7 @@ outputDF <- function(
 ###--- check the consistency with cor.test -------
 ### 检查结果是否与原函数cor.test一致,这里只评估r值与p值
 ### 这里的x与y就是指的表达谱，而前面函数的x与y分别是表达谱的转置
+
 checkPoint <- function(
 	x, y= NULL,
 	outputdf, 
@@ -191,9 +192,10 @@ checkPoint <- function(
 		}
 		c(nms, tt$estimate, tt$p.value)
 	}
-	cat("Results using cor.test()\n")
 	s <- t(sapply(vec, tTest))
 	rownames(s) <- colnames(s) <- NULL
-	s
+	l <- c(list(outputdf[vec, 1:4]),list(s))
+	names(l) <- c("Results", "Results with cor.test()")
+	l
 }
 
