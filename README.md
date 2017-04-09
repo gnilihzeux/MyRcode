@@ -25,7 +25,9 @@
 ### 常用小技巧
   
   * [R配色](https://github.com/gnilihzeux/MyRcode/blob/master/color.md)  
-  
+  * [相关性矩阵及其检验](https://github.com/gnilihzeux/MyRcode/tree/master/matrix_correlation)  
+    - R中快速计算共表达，例如构建基因共表达网络
+  
 ### 函数解析
 
   * [formula](https://github.com/gnilihzeux/MyRcode/blob/master/formula.md)
