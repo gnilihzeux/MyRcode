@@ -2,8 +2,6 @@
 ###　Examples to display how to use  matrixCorTest.R ###
 ########################################################
 ###--- header ------------------------------------------
-setwd("E:/King组内工作/好的程序/cor.test")
-source("cor.test.pearson.R")
 source("matrixCorTest.R")
 options(stringsAsFactors= F)
 
