@@ -18,7 +18,8 @@
 R包`psych`也有个函数`corr.test`做相同的事儿，实际上该函数集成的是`cor`与`t.test`，所以在计算大矩阵时很吃力，
 不过它除了计算p值与fdr值还计算了置信区间和标准误等信息，感兴趣可以看看源代码。  
 另外值得注意的是，原始的`cor.test`对三种不同的相关性方法`pearson/spearman/kendall`进行的检验时采取的策略不一样，可以用
-`getAnywhere(cor.test.default)`查看源代码。而`corr.test`对三种方法都使用了`t.test`进行检验，其中的数学原理我不是很了解，所以计算的时候需要谨慎。故而在这里，`pearsonTestMatrix`**也许**也能够对`spearman/kendall`进行检验。
+`getAnywhere(cor.test.default)`查看源代码。而`corr.test`对三种方法都使用了`t.test`进行检验，其中的数学原理我不是很了解，所以计算的时候需要谨慎。故而在这里，`pearsonTestMatrix`**也许**也能够对`spearman/kendall`进行检验。但，`t.test`是对服从正态分布的
+伙计进行检验，而`spearman/kendall`是非参数方法，这似乎不合理……
 
 **注意**：`bigcor`只对`x`矩阵进行分割，所以当有两个矩阵时，将最大的设置为`x`应该更好。也许有之后会有改进的程序，希望~！
 
