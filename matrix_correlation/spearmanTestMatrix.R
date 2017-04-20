@@ -3,7 +3,7 @@ AS89 <- function(s, n, lower.tail){
 				p = double(1), integer(1), as.logical(lower.tail), 
 				PACKAGE = "pspearman")$p
 }			
-spearmanMatrix <- function(
+spearmanTestMatrix <- function(
 	x, y= NULL, adjust= "BH", CPU= 4
 )
 {
