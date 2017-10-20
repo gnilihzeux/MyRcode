@@ -2,5 +2,5 @@
 > 参考 Quick-R: http://www.statmethods.net/graphs/bar.html
 
 ## 基本调整
-![](barplot1.png)
+![](barplot/barplot1.png)
 
