@@ -7,7 +7,7 @@ counts <- table(mtcars$gear)
 barplot(counts, main="Car Distribution", xlab="Number of Gears")
 ```
 
-![](barplot/barplot1.png)
+![](barplot1.png)  
 
 然而，图中bar太宽，需要调窄一点，这需要配合参数`xlim`
 
