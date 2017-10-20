@@ -166,3 +166,17 @@ axis(side= 4, pos= 0, at= new_tbl[qvalue < 0, 3], labels= new_tbl[qvalue < 0, 2]
 
 ![](barplot9.png)
 
+## 讨论
+1. 非多组(`beside= F`), 如<加标准误>模块，关于`barplot(horiz= FALSE)`非多组的x轴的位置，第一个bar的左边缘的x值为参数`space`的距离，然后每一个bar的宽度刚好为1(其中`width= 1`控制），所以可以如<加标准误>的例子中定位每个bar的中心；
+```
+counts <- table(mtcars$gear)
+points(c(0.7, 1.9), c(2, 2))
+```
+该例子是默认参数，我们可以看出默认`space= 0.2`, 那么第一个bar的x坐标为0.2，原点分别标示了第一以及第二个bar的x位置
+2. 多组(`beside= T`)的情况，即<分组>模块，第一个bar的x轴坐标的距离刚好是1，且不同组之间的间隔也为1(其中参数`width= 1`)
+```
+counts <- table(mtcars$vs, mtcars$gear)
+barplot(counts, beside= T, col= "grey")
+points(c(1.5, 2.5, 3.5, 4.5), rep(2, 4))
+```
+可以从该例子中看出，默认`space=1`，所以第一个bar的x坐标也为1
