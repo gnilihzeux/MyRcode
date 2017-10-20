@@ -117,3 +117,52 @@ axis(2, at= c(260, 300), labels= c(900, 1000), las= 1)
 ![](barplot8.png)
 
 另一个相似的例子
+
+```
+m0 <- c(172, 24, 15, 5, rep(0, 5))
+m1 <- c(78, 224, 77, 25, 7, 3, 4, 4, 1)
+m2 <- c(10, rep(0, 8))
+m3 <- c(34, rep(0, 8))
+mat <- matrix(c(m0, m1, m2, m3), 4, byrow= T)
+barplot(mat, ylim= c(0, 300), col= c("black", "grey", "white", "grey"), 
+        border= F, xlim= c(0, 17), xlab= "no. circRNAs", ylab= "no. hosts", 
+        names.arg= 1:9, axes= F)
+axis(2, at= c(0, 10, 30, 100, 150, 200, 250), labels= c(0, 10, 30, 100, 150, 200, 250), las= 1)
+axis(2, at= c(260, 300), labels= c(900, 1000), las= 1)
+```
+
+### 对称bar图
+这种图经常见到，但使用基础函数绘制需要一定的技巧
+
+```
+# 构造数据
+set.seed(4)
+qvalue <- sort(rnorm(10, mean= 0, sd= 5))
+labels <- c("cytokine-mediated signaling pathway",
+"cellular response to cytokine stimulus",
+"negative regulation of response to external stimulus",
+"regulation of wound healing",
+"divalent inorganic cation homeostasis",
+"regulation of inflammatory response",
+"cellular divalent inorganic cation homeostasis",
+"regulation of system process",
+"cellular calcium ion homeostasis",
+"regulation of defense response"
+)
+tbl <- data.frame(qvalue, labels)
+# 参数计算
+LIM <- round(max(abs(qvalue))) + 1 #设置坐标范围
+SPACE <- 0.1 #设置bar图间距
+L <- length(qvalue)
+AXIS <- rev(seq(0, L-1) + seq(L)*0.1 + 0.5) #计算bar图label的坐标
+new_tbl <- data.frame(tbl, rev(AXIS))
+# 绘图
+barplot(qvalue, horiz= TRUE, xlim= c(- LIM, LIM), space= SPACE, 
+        col= c(rep("#0080FF", sum(qvalue < 0)), rep("#FF8000", sum(qvalue > 0)))
+)
+axis(side= 2, pos= 0, at= new_tbl[qvalue > 0, 3], labels= new_tbl[qvalue > 0, 2], las= 2, tick= FALSE)
+axis(side= 4, pos= 0, at= new_tbl[qvalue < 0, 3], labels= new_tbl[qvalue < 0, 2], las= 2, tick= FALSE)
+```
+
+![](barplot9.png)
+
