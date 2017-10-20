@@ -31,7 +31,7 @@
 ### 函数解析
 
   * [formula](https://github.com/gnilihzeux/MyRcode/blob/master/formula.md)
-  * [barplot](https://github.com/gnilihzeux/MyRcode/blob/master/barplot/barplot.md)
+  * [barplot](https://github.com/gnilihzeux/MyRcode/blob/master/barplot)
   * [stripchart为boxplot加散点](https://github.com/gnilihzeux/MyRcode/blob/master/stripchart.R)
   * [expression/quote/substitute/parse](https://github.com/gnilihzeux/MyRcode/edit/master/substitute.md)
   * [paste参数sep与collapse的区别](https://github.com/gnilihzeux/MyRcode/blob/master/paste.md)
