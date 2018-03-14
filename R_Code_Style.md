@@ -26,6 +26,20 @@ bad.name <- "No!"
 mean <- "God Bless You!"
 ```
 
+**常量** 字母全部大写
+
+```
+PI <- 3.14
+```
+
+**函数名** 第一个单词小写，其他单词首字母大写
+
+```
+getField <- function(height, width){
+  height * width
+}
+```
+
 ## 二、语法
 
 ### 1. 缩进
@@ -62,14 +76,21 @@ if(y == 0){
 **注意** 每行命令最好不超过 80 个字符，如果代码过长，使用缩进解决
 
 ```
-long_function_name <- function(a = "a long argument", 
-                               b = "another argument",
-                               c = "another long argument") {
+# function parameters
+longFunctionName <- function(a = "a long argument", 
+                             b = "another argument",
+                             c = "another long argument") {
   # As usual code is indented by two spaces.
   print(a)
   print(b)
   print(c)
 }
+# alignment of '='
+plot(x    = x.coord,
+     y    = data.mat[, MakeColnames(metrex)],
+     ylim = ylim,
+     xlab = "dates"
+     )
 ```
 
 ## 代码结构化
