@@ -1,0 +1,209 @@
+---
+title: "miRNA-seq项目报告"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: yeti
+    highlight: kate
+    code_folding: show
+    fig.caption: True
+    df_print: paged
+author: Jinwen
+---
+
+> 参考网上各种资料和个人习惯，力求能够写出优雅的 R 代码。
+
+## R Style 总结
+
+1. 文件命名（File Names）：R 代码以`.R`结尾，取名简单明了
+2. 标识符（Identifiers）：变量名`variable_name`，函数名`functionName`，常量`CONSTANT`
+3. 行长度（Line Length）：每行最多80个单词
+4. 行首缩进（Indentation）：两个空格，不要用 Tab
+5. 间隔（Spacing）：二元操作符两边加一个空格并在逗号后加一个空格，例如 `sum(x = 5, y = 3)`
+6. 花括号`{}`（Curly Braces）：左花括号在相同行，花括号自成一行
+7. `else`：必须接一对花括号
+8. 赋值：用`<-`而不是`=`
+9. 分号：不要用分号分割行，一行执行一个命令
+10. 注释（Comments）：井号`#`后加一个空格 
+11. 函数定义及调用
+12. 函数注释
+13. 代码布局
+14. 文件路径
+15. 争议标注：不太明确的地方用特定符号`# @issue [statements about this issue]`标注
+
+**注意** 在调用函数时，重要参数即使默认也需要列出来，并且注释；另外，逻辑符号`TRUE`和`FALSE`不要省略成`T`和`F`
+
+## R 语言规则
+1. 避免使用`attach`
+2. 函数在抛出 errors 应该使用`stop()`
+3. 避免使用 S4 对象和方法
+
+## 文件名（File Names）
+R 代码文件名以`.R`结尾，应该简单明了，单词之间用下划线`_`分割，词组用减号`-`或首字母大写的方式连接；如果是连续文件，标上序号
+
+```{r eval = FALSE}
+# case 1
+good_name.R
+# case 2
+RNA-seq_analysis_reports.html
+# case 3
+1-quality_control.R
+2-fastq.R
+```
+
+## 标识符（Identifiers）
+**变量** 对于变量，所有单词应该小写，并以下划线分割`_`；避免使用点号`.`，因为 R 中 S3 方法以点号分割。另外，避免使用关键字。
+
+```{r}
+# Good
+good_name <- "haha"
+# Bad
+bad.name <- "No!"
+mean <- "God Bless You!"
+```
+
+**常量** 字母全部大写
+
+```
+PI <- 3.14
+```
+
+**函数名** 第一个单词小写，其他单词首字母大写
+
+```{r}
+getField <- function(height, width){
+  height * width
+}
+```
+
+## 间隔（Spacing）
+二元操作符`=, +, -, *, /, etc.`两边加入一个空格，`:, ::, :::`除外；逗号后总是跟一个逗号`,`，就如英文写作一样
+ 
+```{r eval = FALSE}
+average <- mean(feet / 12 + inches, na.rm= TRUE)
+x <- 1:10
+base::get
+```
+
+其他情况
+
+```{r eval = FALSE}
+plot(x    = x.coord,
+     y    = data.mat[, MakeColName(metric, ptiles[1], "roiOpt")],
+     ylim = ylim,
+     xlab = "dates",
+     ylab = metric,
+     main = (paste(metric, " for 3 samples ", sep = "")))
+```
+
+## 花括号（Curly Braces）
+主要涉及`if...else`以及`function`格式
+
+```{r eval = FALSE}
+if (y == 0) {
+  # 空行
+  log(x) # 表达式前面有两个空格
+} else {
+  
+  y ^ x
+}
+```
+
+## 函数定义及调用
+函数定义时应该先列出没有默认值的，然后才列有默认值的；另外，如果参数太多，应该分行排列
+
+```{r}
+# function paras layout
+longFunctionName <- function(paras_without_default,
+                             a = "a long argument", 
+                             b = "another argument",
+                             c = "another long argument") {
+  # As usual code is indented by two spaces.
+  print(a)
+  print(b)
+  print(c)
+}
+```
+
+## 函数注释
+在函数定义下面应该立刻列出函数的注释，从而不用阅读代码而知道如何调用函数，包括
+* 简单的描述信息
+* 参数定义，标注为`Args`，解释每个参数包括数据类型
+* 返回值的描述，标注为`Returns`
+
+另外，函数内部注释应该另起一行
+
+```{r}
+CalculateSampleCovariance <- function(x, y, verbose = TRUE) {
+  # Computes the sample covariance between two vectors.
+  #
+  # Args:
+  #     x: One of two vectors whose sample covariance is to be calculated.
+  #     y: The other vector. x and y must have the same length, greater than one,
+  #         with no missing values.
+  #     verbose: If TRUE, prints sample covariance; if not, not. Default is TRUE.
+  #
+  # Returns:
+  #     The sample covariance between x and y.
+  n <- length(x)
+
+  # Error handling
+  if (n <= 1 || n != length(y)) {
+  
+    stop("Arguments x and y have different lengths: ",
+       length(x), " and ", length(y), ".")
+  }
+
+  if (TRUE %in% is.na(x) || TRUE %in% is.na(y)) {
+  
+    stop(" Arguments x and y must not have missing values.")
+  }
+  
+  covariance <- var(x, y)
+  if (verbose)cat("Covariance = ", round(covariance, 4), ".\n", sep = "")
+  
+  return(covariance)
+}
+```
+
+## 代码布局
+一个较完整的程序应该包含以下几个部分：
+1. 版权声明
+2. 作者信息
+3. 文件描述，包括目的、输入、输出
+4. 头文件，包括全局变量的设定、`source`等内容
+5. 函数定义：可以重新设定一个`functions.R`文件
+6. 主程序 
+
+```{r eval = FALSE}
+# Copyright statement -------------
+#   copyright statement
+
+# Author --------------------------
+#   author: Jinwen
+#   e-mail: xxx@xx.xx
+
+# Description ---------------------
+#   aim: 
+#   inputs:
+#   outputs:
+
+# Header --------------------------
+PATH <- "your_path"
+
+source('xxx.R')
+
+options(stringsAsFactors = FALSE)
+
+# Funtions ------------------------
+参照【函数定义及调用】及【函数注释】
+
+# Main ----------------------------
+plot(x, y)
+
+```
+
+## 文件路径
+
+
